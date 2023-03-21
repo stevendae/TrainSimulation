@@ -2,15 +2,28 @@
 
 #include <memory>
 
-class Train {
+class Train
+{
 public:
     Train(int id, int startingTrack, int destination, int direction);
     ~Train();
-    int getStartingTrack() { return m_startingTrack; }
-    int getDestination() { return m_destination; }
-    int getDirection() { return m_direction; }
-    int getId() { return m_id; }
-    
+    int getStartingTrack()
+    {
+        return m_startingTrack;
+    }
+    int getDestination()
+    {
+        return m_destination;
+    }
+    int getDirection()
+    {
+        return m_direction;
+    }
+    int getId()
+    {
+        return m_id;
+    }
+
 private:
     int m_id;
     int m_startingTrack;

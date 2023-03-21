@@ -96,27 +96,6 @@ else() # Use FetchContent
     FetchContent_MakeAvailable(nlohmann_json)
 
     FetchContent_Declare(
-        fmt
-        GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-        GIT_TAG 9.1.0
-        GIT_SHALLOW TRUE)
-    FetchContent_MakeAvailable(fmt)
-
-    FetchContent_Declare(
-        spdlog
-        GIT_REPOSITORY https://github.com/gabime/spdlog.git
-        GIT_TAG v1.11.0
-        GIT_SHALLOW TRUE)
-    FetchContent_MakeAvailable(spdlog)
-
-    FetchContent_Declare(
-        cxxopts
-        GIT_REPOSITORY https://github.com/jarro2783/cxxopts.git
-        GIT_TAG v3.0.0
-        GIT_SHALLOW TRUE)
-    FetchContent_MakeAvailable(cxxopts)
-
-    FetchContent_Declare(
         Catch2
         GIT_REPOSITORY https://github.com/catchorg/Catch2.git
         GIT_TAG v2.13.9

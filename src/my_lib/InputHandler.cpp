@@ -1,13 +1,15 @@
-#include <iostream>
-#include <sstream>
-#include <vector>
-#include <string>
-#include <limits>
 #include <ios>
+#include <iostream>
+#include <limits>
+#include <sstream>
+#include <string>
+#include <vector>
 
 #include "InputHandler.h"
 
-InputHandler::InputHandler(){}
+InputHandler::InputHandler()
+{
+}
 
 bool InputHandler::getValidInput()
 {
@@ -24,7 +26,9 @@ bool InputHandler::getValidInput()
     {
         type = m_type;
         std::cout << "Which components do this track segment connect to? If it "
-                     "is the first component, just press enter. If multiple separate each with a space." << std::endl;
+                     "is the first component, just press enter. If multiple "
+                     "separate each with a space."
+                  << std::endl;
         std::getline(std::cin, connectedTo);
         if (!validTrackSegment())
         {
@@ -51,7 +55,6 @@ bool InputHandler::getValidInput()
         return false;
     }
     return true;
-
 }
 
 bool InputHandler::addMoreComponents()
@@ -80,7 +83,7 @@ std::vector<int> InputHandler::getConnectedTo()
     {
         tokens.push_back(stoi(token));
     }
-    
+
     return tokens;
 }
 
@@ -95,9 +98,11 @@ bool InputHandler::validTrackSegment()
 
 void InputHandler::setTrainParameters()
 {
-    std::cout << "Enter the id of the Track Segment from where the train starts from: ";
+    std::cout << "Enter the id of the Track Segment from where the train "
+                 "starts from: ";
     std::cin >> trainStart;
-    std::cout << "Enter the id of the Track Segment from you want the train to go: ";
+    std::cout
+        << "Enter the id of the Track Segment from you want the train to go: ";
     std::cin >> trainDestination;
     std::cout << "Which adjacent Track Component does the train face? ";
     std::cin >> trainDirection;
@@ -105,11 +110,14 @@ void InputHandler::setTrainParameters()
 
 bool InputHandler::loadTrackState()
 {
-    std::cout << "Do you have a previous track state that you would like to load? (y/n)" << std::endl;
+    std::cout << "Do you have a previous track state that you would like to "
+                 "load? (y/n)"
+              << std::endl;
     std::cin >> m_continue;
     if (m_continue == "y" || m_continue == "Y")
     {
-        std::cout << "Enter the filename of the track state you would like to load: ";
+        std::cout
+            << "Enter the filename of the track state you would like to load: ";
         std::cin >> loadFilename;
         return true;
     }
@@ -118,7 +126,8 @@ bool InputHandler::loadTrackState()
 
 bool InputHandler::saveTrackState()
 {
-    std::cout << "Do you want to save the current track state? (y/n)" << std::endl;
+    std::cout << "Do you want to save the current track state? (y/n)"
+              << std::endl;
     std::cin >> m_continue;
     if (m_continue == "y" || m_continue == "Y")
     {
@@ -137,8 +146,3 @@ bool InputHandler::addMoreTrains()
     }
     return false;
 }
-
-
-
-
-

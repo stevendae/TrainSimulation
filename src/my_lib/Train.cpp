@@ -1,6 +1,6 @@
 #include "Train.h"
 
-Train::Train(int id, int startingTrack,int destination, int direction)
+Train::Train(int id, int startingTrack, int destination, int direction)
 {
     m_id = id;
     m_startingTrack = startingTrack;
@@ -12,5 +12,3 @@ Train::~Train()
 {
     //dtor
 }
-
-

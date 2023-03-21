@@ -41,4 +41,3 @@ public:
         return std::make_unique<Terminator>();
     }
 };
-

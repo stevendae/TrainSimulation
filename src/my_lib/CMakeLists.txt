@@ -21,10 +21,7 @@ string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 target_link_libraries(
     ${LIBRARY_NAME}
     PRIVATE nlohmann_json::nlohmann_json
-            ${SDL2_LIBRARIES}
-            fmt::fmt
-            spdlog::spdlog
-            cxxopts::cxxopts)
+            ${SDL2_LIBRARIES})
 
 target_set_warnings(
     TARGET
