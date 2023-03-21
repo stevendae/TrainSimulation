@@ -24,6 +24,7 @@ public:
         return nodes.size();
     }
     std::shared_ptr<Node> createNodeByTypeAndID(std::string type, int id);
+    std::shared_ptr<Signal> createSignal(int id, int node1, int node2);
     std::shared_ptr<Node> getNode(int id) const;
     std::vector<std::shared_ptr<Node>> getNodes() const;
     std::vector<std::pair<int, int>> getEdges() const

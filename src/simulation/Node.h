@@ -16,7 +16,11 @@ class Signal
     };
 
 public:
-    Signal() = default;
+    Signal(int id, int node1, int node2) {
+        this->id = id;
+        position.insert(node1);
+        position.insert(node2);
+    }
     ~Signal() = default;
 
     State state{State::RED};
@@ -45,6 +49,10 @@ public:
     std::string getType() const
     {
         return type;
+    }
+    void addSignal(std::shared_ptr<Signal> signal)
+    {
+        signals.push_back(signal);
     }
 
     std::mutex mutex_;

@@ -57,9 +57,9 @@ bool InputHandler::getValidInput()
     return true;
 }
 
-bool InputHandler::addMoreComponents()
+bool InputHandler::addTrackComponents()
 {
-    std::cout << "\nDo you want to add more components to the track? (y/n): ";
+    std::cout << "\nDo you want to add components to the track? (y/n): ";
     std::cin >> m_continue;
     if (m_continue != "y" && m_continue != "Y")
     {
@@ -108,6 +108,14 @@ void InputHandler::setTrainParameters()
     std::cin >> trainDirection;
 }
 
+void InputHandler::setSignalParameters()
+{
+    std::cout << "Enter the id of the first Track Segment that signal is connected to: ";
+    std::cin >> signalID_1;
+    std::cout << "Enter the id of the second Track Segment that signal is connected to: ";
+    std::cin >> signalID_2;
+}
+
 bool InputHandler::loadTrackState()
 {
     std::cout << "Do you have a previous track state that you would like to "
@@ -136,9 +144,20 @@ bool InputHandler::saveTrackState()
     return false;
 }
 
-bool InputHandler::addMoreTrains()
+bool InputHandler::addTrains()
 {
-    std::cout << "Do you want to add more trains? (y/n)" << std::endl;
+    std::cout << "Do you want to add (more) trains? (y/n)" << std::endl;
+    std::cin >> m_continue;
+    if (m_continue == "y" || m_continue == "Y")
+    {
+        return true;
+    }
+    return false;
+}
+
+bool InputHandler::addSignals()
+{
+    std::cout << "Do you want to add (more) signals? (y/n)" << std::endl;
     std::cin >> m_continue;
     if (m_continue == "y" || m_continue == "Y")
     {

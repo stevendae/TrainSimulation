@@ -16,6 +16,12 @@ std::shared_ptr<Node> Track::createNodeByTypeAndID(std::string type, int id)
     return nodes[id];
 }
 
+std::shared_ptr<Signal> Track::createSignal(int id, int node1, int node2)
+{
+    signals[id] = std::make_shared<Signal>(id, node1, node2);
+    return signals[id];
+}
+
 void Track::connectNodes(std::shared_ptr<Node> node1,
                          std::shared_ptr<Node> node2)
 {

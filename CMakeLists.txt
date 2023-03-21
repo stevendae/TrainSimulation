@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(
-    "CppTemplate"
+    "TrainSignalingSystem"
     VERSION 1.0.0
     LANGUAGES C CXX)
 
@@ -34,8 +34,7 @@ option(ENABLE_CMAKE_FORMAT "Enable to add cmake-format." ON)
 option(ENABLE_LTO "Enable to add Link Time Optimization." ON)
 
 # Project/Library Names
-set(LIBRARY_NAME "lib")
-set(LIBRARY_NAME_2 "lib2")
+set(LIBRARY_NAME "simulation")
 set(UNIT_TEST_NAME "unit_tests")
 set(EXECUTABLE_NAME "main")
 
@@ -69,46 +68,26 @@ if(ENABLE_LTO)
 endif()
 
 # EXTERNAL LIBRARIES
+message("==> Using FetchContent")
+FetchContent_Declare(
+    nlohmann_json
+    GIT_REPOSITORY https://github.com/nlohmann/json.git
+    GIT_TAG v3.11.2
+    GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(nlohmann_json)
 
-if(USE_CONAN)
-    message("==> Using Conan")
-    include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
-    find_package(nlohmann_json)
-    find_package(fmt)
-    find_package(spdlog)
-    find_package(Catch2)
-    find_package(cxxopts)
-elseif(USE_VCPKG)
-    message("==> Using VCPKG")
-    include(${CMAKE_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake)
-    find_package(nlohmann_json)
-    find_package(fmt)
-    find_package(spdlog)
-    find_package(Catch2)
-    find_package(cxxopts)
-else() # Use FetchContent
-    message("==> Using FetchContent")
-    FetchContent_Declare(
-        nlohmann_json
-        GIT_REPOSITORY https://github.com/nlohmann/json.git
-        GIT_TAG v3.11.2
-        GIT_SHALLOW TRUE)
-    FetchContent_MakeAvailable(nlohmann_json)
-
-    FetchContent_Declare(
-        Catch2
-        GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-        GIT_TAG v2.13.9
-        GIT_SHALLOW TRUE)
-    FetchContent_MakeAvailable(Catch2)
-endif()
+FetchContent_Declare(
+    Catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+    GIT_TAG v2.13.9
+    GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(Catch2)
 
 find_package(SDL2 REQUIRED)
 
 # SUB DIRECTORIES
 
 add_subdirectory(configured)
-add_subdirectory(external)
 add_subdirectory(src)
 add_subdirectory(app)
 add_subdirectory(tests)
