@@ -6,7 +6,7 @@ project(
     LANGUAGES C CXX)
 
 # Global CMake variables are set here
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -15,18 +15,18 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 option(USE_CONAN "Whether to use conan" OFF)
 option(USE_VCPKG "Whether to use vcpkg" OFF)
 
-option(ENABLE_WARNINGS "Enable to add warnings to a target." ON)
+option(ENABLE_WARNINGS "Enable to add warnings to a target." OFF)
 option(ENABLE_WARNINGS_AS_ERRORS "Enable to treat warnings as errors." OFF)
 
-option(ENABLE_TESTING "Enable a Unit Testing build." ON)
+option(ENABLE_TESTING "Enable a Unit Testing build." OFF)
 option(ENABLE_COVERAGE "Enable a Code Coverage build." OFF)
 
 option(ENABLE_INCLUDE_WHAT_YOU_USE "Enable to add iwyu." OFF)
 option(ENABLE_CLANG_TIDY "Enable to add clang tidy." ON)
-option(ENABLE_CPPCHECK "Enable to add cppcheck." OFF)
+option(ENABLE_CPPCHECK "Enable to add cppcheck." ON)
 
-option(ENABLE_SANITIZE_ADDR "Enable to sanitize address (Unix only)." OFF)
-option(ENABLE_SANITIZE_UNDEF "Enable to sanitize undefined (Unix only)." OFF)
+option(ENABLE_SANITIZE_ADDR "Enable to sanitize address (Unix only)." ON)
+option(ENABLE_SANITIZE_UNDEF "Enable to sanitize undefined (Unix only)." ON)
 
 option(ENABLE_CLANG_FORMAT "Enable to add clang-format." ON)
 option(ENABLE_CMAKE_FORMAT "Enable to add cmake-format." ON)
@@ -35,6 +35,7 @@ option(ENABLE_LTO "Enable to add Link Time Optimization." ON)
 
 # Project/Library Names
 set(LIBRARY_NAME "lib")
+set(LIBRARY_NAME_2 "lib2")
 set(UNIT_TEST_NAME "unit_tests")
 set(EXECUTABLE_NAME "main")
 
@@ -95,33 +96,14 @@ else() # Use FetchContent
     FetchContent_MakeAvailable(nlohmann_json)
 
     FetchContent_Declare(
-        fmt
-        GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-        GIT_TAG 9.1.0
-        GIT_SHALLOW TRUE)
-    FetchContent_MakeAvailable(fmt)
-
-    FetchContent_Declare(
-        spdlog
-        GIT_REPOSITORY https://github.com/gabime/spdlog.git
-        GIT_TAG v1.11.0
-        GIT_SHALLOW TRUE)
-    FetchContent_MakeAvailable(spdlog)
-
-    FetchContent_Declare(
-        cxxopts
-        GIT_REPOSITORY https://github.com/jarro2783/cxxopts.git
-        GIT_TAG v3.0.0
-        GIT_SHALLOW TRUE)
-    FetchContent_MakeAvailable(cxxopts)
-
-    FetchContent_Declare(
         Catch2
         GIT_REPOSITORY https://github.com/catchorg/Catch2.git
         GIT_TAG v2.13.9
         GIT_SHALLOW TRUE)
     FetchContent_MakeAvailable(Catch2)
 endif()
+
+find_package(SDL2 REQUIRED)
 
 # SUB DIRECTORIES
 
