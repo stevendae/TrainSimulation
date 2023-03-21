@@ -51,8 +51,8 @@ include(Tools)
 include(LTO)
 include(ConfigSafeGuards)
 
-add_cmake_format_target()
-add_clang_format_target()
+# add_cmake_format_target()
+# add_clang_format_target()
 
 if(ENABLE_SANITIZE_ADDR OR ENABLE_SANITIZE_UNDEF)
     include(Sanitizer)
@@ -103,7 +103,7 @@ else() # Use FetchContent
     FetchContent_MakeAvailable(Catch2)
 endif()
 
-find_package(SDL2 REQUIRED)
+#find_package(SDL2 REQUIRED)
 
 # SUB DIRECTORIES
 
