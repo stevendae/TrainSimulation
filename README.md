@@ -44,14 +44,4 @@ cd app
 ./main
 ```
 
-- Unit testing
-
-```shell
-cd build
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-cmake --build . --config Debug --target unit_tests
-cd tests
-./unit_tests
-```
-
 
