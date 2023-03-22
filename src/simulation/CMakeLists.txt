@@ -12,7 +12,7 @@ set(LIBRARY_HEADERS
                 "${CMAKE_CURRENT_SOURCE_DIR}/InputHandler.h"
                 "${CMAKE_CURRENT_SOURCE_DIR}/Files.h"
                 "${CMAKE_CURRENT_SOURCE_DIR}/Simulation.h")
-set(LIBRARY_INCLUDES "./" "${CMAKE_BINARY_DIR}/configured_files/include" "${SDL2_INCLUDE_DIRS}")
+set(LIBRARY_INCLUDES "./" "${CMAKE_BINARY_DIR}/configured_files/include")
 
 # MyLib Library
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})

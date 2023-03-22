@@ -8,13 +8,22 @@
 ├── CMakeLists.txt
 ├── app
 │   ├── CMakesLists.txt
-│   └── main.cc
+│   └── main.cpp
 ├── cmake
 │   └── cmake modules
 ├── src
-│   ├── CMakesLists.txt
-│   ├── my_lib.h
-│   └── my_lib.cc
+│   ├── simulation
+        ├── Track.h
+        ├── Node.h
+        ├── Train.h
+        ├── InputHandler.h
+        ├── Files.h
+        ├── Simulation.h
+        ├── Track.cpp
+        ├── Train.cpp
+        ├── InputHandler.cpp
+        ├── Files.cpp
+        └── Simulation.cpp
 ```
 
 Library code goes into [src/](src/), main program code in [app/](app) and tests go in [tests/](tests/).
